@@ -76,7 +76,6 @@
     <string name="monthly">monthly</string>
     <string name="address_err">Address Cant Left Blank!</string>
     <string name="please_enter_milk_quantity">Enter Milk Quantity</string>
-    <string name="attach_barcode">Attach Barcode</string>
     <string name="barcode_attached">Barcode Attached</string>
     <string name="prepare">Prepare</string>
     <string name="store">Store</string>
@@ -84,4 +83,9 @@
     <string name="start_feed">Start Feed</string>
     <string name="preparing">Preparing</string>
     <string name="prepared">Prepared</string>
+    <string name="total_milk_quantity">total milk quantity</string>
+    <string name="left_breast_quantity">Left Breast Quantity</string>
+    <string name="right_breast_quantity">Right Breast Quantity</string>
+    <string name="attach_barcode">Attach Barcode</string>
+    <string name="enter_you_note_here">Enter You Note Here</string>
 </resources>

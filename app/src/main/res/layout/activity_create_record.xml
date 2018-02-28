@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="presenter"
+            type="com.android.omadre.activities.CreateRecordActivity" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.android.omadre.activities.CreateRecordActivity">
+
+        <include layout="@layout/customized_toolbar" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/ten_dp">
+
+            <com.androidlib.CustomFontViews.CustomEditTextRegular
+                android:id="@+id/totalMilkET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:hint="@string/total_milk_quantity"
+                android:padding="@dimen/ten_dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ten_dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <com.androidlib.CustomFontViews.CustomEditTextRegular
+                    android:id="@+id/leftBreastMilkET"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/left_breast_quantity"
+                    android:inputType="numberDecimal"
+                    android:padding="@dimen/ten_dp" />
+
+                <com.androidlib.CustomFontViews.CustomEditTextRegular
+                    android:id="@+id/rightBreastMilkET"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:inputType="numberDecimal"
+                    android:hint="@string/right_breast_quantity"
+                    android:padding="@dimen/ten_dp" />
+
+            </LinearLayout>
+
+            <RadioGroup
+                android:id="@+id/breastRG"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ten_dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/leftRB"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/two_dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rbtn_selector"
+                    android:button="@null"
+                    android:checked="true"
+                    android:gravity="center"
+                    android:padding="@dimen/ten_dp"
+                    android:text="Left Breast"
+                    android:textColor="@drawable/rbtn_textcolor_selector" />
+
+                <RadioButton
+                    android:id="@+id/rightRB"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/two_dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rbtn_selector"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:padding="@dimen/ten_dp"
+                    android:text="Right Breast"
+                    android:textColor="@drawable/rbtn_textcolor_selector" />
+
+                <RadioButton
+                    android:id="@+id/bothRB"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/two_dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rbtn_selector"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:padding="@dimen/ten_dp"
+                    android:text="Both Breast"
+                    android:textColor="@drawable/rbtn_textcolor_selector" />
+            </RadioGroup>
+
+            <com.androidlib.CustomFontViews.CustomButtonRegular
+                android:id="@+id/attachBarcodeBT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ten_dp"
+                android:background="@drawable/rounded_button_secondary_bg"
+                android:text="@string/attach_barcode"
+                android:onClick="@{()->presenter.onBarcodeClick()}"
+                android:textColor="@color/white"
+                android:textSize="@dimen/eighteen_sp" />
+
+            <com.androidlib.CustomFontViews.CustomEditTextRegular
+                android:id="@+id/notesET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ten_dp"
+                android:gravity="top"
+                android:hint="@string/enter_you_note_here"
+                android:minLines="4" />
+
+            <com.androidlib.CustomFontViews.CustomButtonRegular
+                android:id="@+id/submitBT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/thirty_dp"
+                android:background="@drawable/rounded_button_primary_bg"
+                android:text="@string/submit"
+                android:onClick="@{()->presenter.onSubmitClick()}"
+                android:textColor="@color/white"
+                android:textSize="@dimen/eighteen_sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>

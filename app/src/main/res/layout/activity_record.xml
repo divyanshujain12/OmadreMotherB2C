@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -11,8 +11,6 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/light_grey"
-
         android:orientation="vertical">
 
         <include layout="@layout/customized_toolbar" />
@@ -20,103 +18,157 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:weightSum="2">
 
-            <Chronometer
-                android:id="@+id/timerCM"
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/one_hundred_dp"
-                android:layout_gravity="center_horizontal"
-                android:gravity="center"
-                android:textSize="@dimen/thirty_sp" />
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight=".9"
+                app:cardCornerRadius="@dimen/five_dp"
+                app:cardElevation="@dimen/five_dp"
+                app:contentPadding="@dimen/five_dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:weightSum="5">
 
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                    <Chronometer
+                        android:id="@+id/timerCM"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:textSize="@dimen/thirty_six_dp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent" />
 
-                <com.androidlib.CustomFontViews.CustomButtonRegular
-                    android:id="@+id/leftBreastBT"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/fifteen_dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/rounded_button_secondary_bg"
-                    android:onClick="@{() -> presenter.onLeftBreastClick()}"
-                    android:text="@string/left_breast"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/sixteen_sp" />
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="2.5">
 
-                <com.androidlib.CustomFontViews.CustomButtonRegular
-                    android:id="@+id/rightBreastBT"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/fifteen_dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/rounded_button_secondary_bg"
-                    android:onClick="@{() -> presenter.onRightBreastClick()}"
-                    android:text="@string/right_breast"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/sixteen_sp" />
+                        <com.androidlib.CustomFontViews.CustomButtonRegular
+                            android:id="@+id/startStopBT"
+                            android:layout_width="@dimen/one_hundred_dp"
+                            android:layout_height="@dimen/one_hundred_dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/circle_button_primary_bg"
+                            android:onClick="@{()->presenter.onStartRecordClick()}"
+                            android:padding="@dimen/ten_dp"
+                            android:text="@string/start"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/eighteen_sp" />
+                    </FrameLayout>
 
-            </LinearLayout>
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/timesCL"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1.5"
+                        android:gravity="bottom"
+                        android:orientation="horizontal"
+                        android:visibility="visible">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/twenty_dp"
-                android:orientation="horizontal">
+                        <android.support.constraint.ConstraintLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/five_dp"
+                            android:visibility="visible"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
 
-                <com.androidlib.CustomFontViews.CustomButtonRegular
-                    android:id="@+id/startBT"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/fifteen_dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/rounded_button_secondary_bg"
-                    android:onClick="@{() -> presenter.onStartClick()}"
-                    android:text="@string/start"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/sixteen_sp" />
+                            <com.androidlib.CustomFontViews.CustomTextviewRegular
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="@dimen/two_dp"
+                                android:text="Start Time"
+                                android:textSize="@dimen/sixteen_sp"
+                                app:layout_constraintBottom_toTopOf="@id/startTimeTV"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent" />
+
+                            <com.androidlib.CustomFontViews.CustomTextviewRegular
+                                android:id="@+id/startTimeTV"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=""
+                                android:textSize="@dimen/fourteen_sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent" />
+                        </android.support.constraint.ConstraintLayout>
+
+                        <android.support.constraint.ConstraintLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/five_dp"
+                            android:visibility="visible"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <com.androidlib.CustomFontViews.CustomTextviewRegular
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="@dimen/two_dp"
+                                android:text="Duration"
+                                android:textSize="@dimen/sixteen_sp"
+                                app:layout_constraintBottom_toTopOf="@id/durationTV"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent" />
+
+                            <com.androidlib.CustomFontViews.CustomTextviewRegular
+                                android:id="@+id/durationTV"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=""
+                                android:textSize="@dimen/fourteen_sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent" />
+                        </android.support.constraint.ConstraintLayout>
 
 
-                <com.androidlib.CustomFontViews.CustomButtonRegular
-                    android:id="@+id/stopBT"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/fifteen_dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/rounded_button_secondary_bg"
-                    android:onClick="@{() -> presenter.onStopClick()}"
-                    android:text="@string/stop"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/sixteen_sp" />
-            </LinearLayout>
-            <com.androidlib.CustomFontViews.CustomButtonRegular
-                android:id="@+id/attachBarcodeBT"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/fifteen_dp"
-                android:background="@drawable/rounded_button_secondary_bg"
-                android:enabled="false"
-                android:onClick="@{()->presenter.onAttachBarcodeClick()}"
-                android:text="@string/attach_barcode"
-                android:textColor="@color/white" />
+                        <android.support.constraint.ConstraintLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/five_dp"
+                            android:visibility="visible"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
 
-            <com.androidlib.CustomFontViews.CustomButtonRegular
-                android:id="@+id/submitBT"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/fifteen_dp"
-                android:background="@drawable/rounded_button_secondary_bg"
-                android:enabled="false"
-                android:onClick="@{()->presenter.onSubmitClick()}"
-                android:text="@string/submit"
-                android:textColor="@color/white" />
+                            <com.androidlib.CustomFontViews.CustomTextviewRegular
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="@dimen/two_dp"
+                                android:text="Stop Time"
+                                android:textSize="@dimen/sixteen_sp"
+                                app:layout_constraintBottom_toTopOf="@id/stopTimeTV"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent" />
+
+                            <com.androidlib.CustomFontViews.CustomTextviewRegular
+                                android:id="@+id/stopTimeTV"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=""
+                                android:textSize="@dimen/fourteen_sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent" />
+                        </android.support.constraint.ConstraintLayout>
+                    </android.support.constraint.ConstraintLayout>
+
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
         </LinearLayout>
-
-
     </LinearLayout>
 </layout>

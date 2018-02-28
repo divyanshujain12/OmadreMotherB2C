@@ -5,6 +5,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import com.android.omadre.Constants.API;
 import com.android.omadre.Constants.ApiCodes;
@@ -35,6 +36,8 @@ public class RecordActivity extends BaseActivity implements FeedingAmountInterfa
     private String leftAmount, rightAmount;
     private IntentIntegrator intentIntegrator;
     private String qrCodeData;
+    private boolean recording = false;
+    private String TIME_FORMAT = "hh:mm:ss";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,57 +47,43 @@ public class RecordActivity extends BaseActivity implements FeedingAmountInterfa
         activityRecordBinding.setPresenter(this);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        Utils.configureToolbarWithBackButton(this, toolbar, "RECORD");
+        Utils.configureToolbarWithBackButton(this, toolbar, "RECORD PUMPING");
 
         initViews();
     }
 
     private void initViews() {
-        enableDisableBothLeftRightBreastBT(true);
-        disableBothStartStopBT();
-
+        activityRecordBinding.startTimeTV.setText(Utils.formatDateAndTime(Utils.getCurrentTimeInMillisecond(), Utils.TIME_FORMAT));
     }
 
-    public void onLeftBreastClick() {
-        changeLeftBreastColorEnable(true);
-        enableDisableStartStopBT(true);
-        leftBreastButtonClick = true;
-
-    }
-
-    public void onRightBreastClick() {
-        changeLeftBreastColorEnable(false);
-        enableDisableStartStopBT(true);
-        leftBreastButtonClick = false;
-    }
-
-    public void onStartClick() {
-        enableDisableBothLeftRightBreastBT(false);
-        enableDisableStartStopBT(false);
-        startStopTimer(true);
-        enableDisableSubmitAnAttachBarcodeButton(false);
-    }
-
-    public void onStopClick() {
-        enableDisableBothLeftRightBreastBT(true);
-        disableBothStartStopBT();
-        changeBothBreastBgColorDisable();
-        startStopTimer(false);
-    }
-
-    public void onAttachBarcodeClick() {
-        intentIntegrator = new IntentIntegrator(this);
-        intentIntegrator.initiateScan();
-    }
-
-    public void onSubmitClick() {
-        if (qrCodeData.length() > 0) {
-            ReusedFunctions.getInstance().HitJsonObjectWebAPI(this, true, ApiCodes.BOTTLE_INFO, CallWebService.POST, API.BOTTLE_INFO, createJsonForPostRecord(), this);
-
+    public void onStartRecordClick() {
+        if (!recording) {
+           // onTimeStart();
+            startActivity(new Intent(this,CreateRecordActivity.class));
         } else {
-            CustomToasts.getInstance(this).showErrorToast("Please attach barcode first");
+            onStopTime();
         }
+        startStopTimer(recording);
     }
+
+    private void onTimeStart() {
+        recording = true;
+        activityRecordBinding.timesCL.setVisibility(View.VISIBLE);
+        startTime = Utils.getCurrentTimeInMillisecond();
+        activityRecordBinding.startTimeTV.setText(Utils.formatDateAndTime(startTime, TIME_FORMAT));
+        activityRecordBinding.startStopBT.setBackgroundResource(R.drawable.circle_button_secondary_bg);
+        activityRecordBinding.startStopBT.setText(getString(R.string.stop));
+    }
+
+    private void onStopTime() {
+        recording = false;
+        stopTime = Utils.getCurrentTimeInMillisecond();
+        activityRecordBinding.stopTimeTV.setText(Utils.formatDateAndTime(stopTime, TIME_FORMAT));
+        activityRecordBinding.startStopBT.setBackgroundResource(R.drawable.circle_button_primary_bg);
+        activityRecordBinding.startStopBT.setText(getString(R.string.start));
+        activityRecordBinding.durationTV.setText(Utils.getDifferenceInString(stopTime - startTime));
+    }
+
 
     @Override
     public void onJsonObjectSuccess(JSONObject response, int apiType) throws JSONException {
@@ -112,52 +101,6 @@ public class RecordActivity extends BaseActivity implements FeedingAmountInterfa
         CustomToasts.getInstance(this).showErrorToast(str);
     }
 
-    private void enableDisableStartStopBT(boolean enableStartBtn) {
-        if (enableStartBtn) {
-            activityRecordBinding.startBT.setEnabled(true);
-            activityRecordBinding.startBT.setBackgroundResource(R.drawable.rounded_button_primary_bg);
-            activityRecordBinding.stopBT.setEnabled(false);
-            activityRecordBinding.stopBT.setBackgroundResource(R.drawable.rounded_button_secondary_bg);
-        } else {
-            activityRecordBinding.stopBT.setEnabled(true);
-            activityRecordBinding.stopBT.setBackgroundResource(R.drawable.rounded_button_primary_bg);
-            activityRecordBinding.startBT.setEnabled(false);
-            activityRecordBinding.startBT.setBackgroundResource(R.drawable.rounded_button_secondary_bg);
-        }
-    }
-
-    private void disableBothStartStopBT() {
-        activityRecordBinding.startBT.setEnabled(false);
-        activityRecordBinding.startBT.setBackgroundResource(R.drawable.rounded_button_secondary_bg);
-        activityRecordBinding.stopBT.setEnabled(false);
-        activityRecordBinding.stopBT.setBackgroundResource(R.drawable.rounded_button_secondary_bg);
-    }
-
-    private void changeLeftBreastColorEnable(boolean enableLeftBreast) {
-        if (enableLeftBreast) {
-            activityRecordBinding.leftBreastBT.setBackgroundResource(R.drawable.rounded_button_primary_bg);
-            activityRecordBinding.rightBreastBT.setBackgroundResource(R.drawable.rounded_button_secondary_bg);
-        } else {
-            activityRecordBinding.rightBreastBT.setBackgroundResource(R.drawable.rounded_button_primary_bg);
-            activityRecordBinding.leftBreastBT.setBackgroundResource(R.drawable.rounded_button_secondary_bg);
-        }
-    }
-
-    private void enableDisableBothLeftRightBreastBT(boolean enable) {
-        if (enable) {
-            activityRecordBinding.leftBreastBT.setEnabled(true);
-            activityRecordBinding.rightBreastBT.setEnabled(true);
-        } else {
-            activityRecordBinding.leftBreastBT.setEnabled(false);
-            activityRecordBinding.rightBreastBT.setEnabled(false);
-        }
-    }
-
-    private void changeBothBreastBgColorDisable() {
-        activityRecordBinding.leftBreastBT.setBackgroundResource(R.drawable.rounded_button_secondary_bg);
-        activityRecordBinding.rightBreastBT.setBackgroundResource(R.drawable.rounded_button_secondary_bg);
-    }
-
     private void startStopTimer(boolean start) {
         if (start) {
             activityRecordBinding.timerCM.setBase(SystemClock.elapsedRealtime());
@@ -170,20 +113,6 @@ public class RecordActivity extends BaseActivity implements FeedingAmountInterfa
 
 
             ReusedFunctions.getInstance().showMilkQuantityAlert(this, this);
-        }
-    }
-
-    private void enableDisableSubmitAnAttachBarcodeButton(boolean enable) {
-        if (enable) {
-            activityRecordBinding.submitBT.setBackgroundResource(R.drawable.rounded_button_primary_bg);
-            activityRecordBinding.submitBT.setEnabled(true);
-
-            activityRecordBinding.attachBarcodeBT.setEnabled(true);
-        } else {
-            activityRecordBinding.submitBT.setBackgroundResource(R.drawable.rounded_button_secondary_bg);
-            activityRecordBinding.submitBT.setEnabled(false);
-
-            activityRecordBinding.attachBarcodeBT.setEnabled(false);
         }
     }
 
@@ -203,7 +132,7 @@ public class RecordActivity extends BaseActivity implements FeedingAmountInterfa
             rightAmount = amount;
         }
         if (leftStartTime > 0 && rightStartTime > 0) {
-            enableDisableSubmitAnAttachBarcodeButton(true);
+            //enableDisableSubmitAnAttachBarcodeButton(true);
         }
         startTime = 0;
         stopTime = 0;
@@ -218,8 +147,7 @@ public class RecordActivity extends BaseActivity implements FeedingAmountInterfa
                 CustomToasts.getInstance(this).showErrorToast("Result Not Found");
             } else {
                 qrCodeData = result.getContents();
-                activityRecordBinding.attachBarcodeBT.setText(R.string.barcode_attached);
-                activityRecordBinding.attachBarcodeBT.setBackgroundResource(R.drawable.rounded_button_primary_bg);
+
 
             }
         } else {
