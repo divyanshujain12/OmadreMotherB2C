@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="presenter"
+            type="com.android.omadre.activities.DeliverActivity" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.android.omadre.activities.DeliverActivity">
+
+        <include layout="@layout/customized_toolbar" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/twenty_dp">
+
+            <com.androidlib.CustomFontViews.CustomEditTextRegular
+                android:id="@+id/addressET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/black_border_transparent_bg"
+                android:gravity="top"
+                android:hint="@string/address"
+                android:minLines="5"
+                android:padding="@dimen/five_dp"
+                android:textSize="@dimen/sixteen_sp" />
+
+            <com.androidlib.CustomFontViews.CustomTextviewRegular
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/fourty_dp"
+                android:gravity="center"
+                android:text="@string/debit_card_online_payment"
+                android:textColor="@color/black" />
+
+            <com.androidlib.CustomFontViews.CustomButtonRegular
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/twenty_dp"
+                android:background="@drawable/black_border_transparent_bg"
+                android:onClick="@{()->presenter.onPayClick()}"
+                android:text="@string/pay" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

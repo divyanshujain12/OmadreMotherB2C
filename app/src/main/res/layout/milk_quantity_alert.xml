@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.androidlib.CustomFontViews.CustomEditTextRegular
+        android:id="@+id/milkQuantityET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/five_dp"
+        android:background="@drawable/rounded_grey_transparent_bg"
+        android:hint="@string/please_enter_milk_quantity"
+        android:padding="@dimen/ten_dp"
+        android:text="0"
+        android:textSize="@dimen/sixteen_sp" />
+
+    <com.androidlib.CustomFontViews.CustomButtonRegular
+        android:id="@+id/milkQuantitySubmitBT"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_grey_transparent_bg"
+        android:gravity="center"
+        android:text="@string/submit"
+        android:layout_marginTop="@dimen/fifty_dp"
+        android:textSize="@dimen/eighteen_sp" />
+
+
+</LinearLayout>

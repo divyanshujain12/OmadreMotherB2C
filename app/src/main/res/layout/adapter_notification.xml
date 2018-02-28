@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="presenter"
+            type="com.android.omadre.adapters.NotificationAdapter" />
+
+        <variable
+            name="data"
+            type="com.android.omadre.Models.NotificationModel" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/five_dp"
+        android:padding="@dimen/ten_dp">
+
+        <com.androidlib.CustomFontViews.CustomTextviewBold
+            android:id="@+id/titleTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{data.title}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/eighteen_sp"
+            app:layout_constraintLeft_toLeftOf="parent" />
+
+        <com.androidlib.CustomFontViews.CustomTextviewRegular
+            android:id="@+id/dateTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{data.date}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/fourteen_sp"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <com.androidlib.CustomFontViews.CustomTextviewRegular
+            android:id="@+id/descriptiopnTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{data.description}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/eighteen_sp"
+            app:layout_constraintTop_toBottomOf="@id/titleTV" />
+
+
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

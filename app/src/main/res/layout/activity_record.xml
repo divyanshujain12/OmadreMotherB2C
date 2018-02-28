@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="presenter"
+            type="com.android.omadre.activities.RecordActivity" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/light_grey"
+
+        android:orientation="vertical">
+
+        <include layout="@layout/customized_toolbar" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Chronometer
+                android:id="@+id/timerCM"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/one_hundred_dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:textSize="@dimen/thirty_sp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.androidlib.CustomFontViews.CustomButtonRegular
+                    android:id="@+id/leftBreastBT"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/fifteen_dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_button_secondary_bg"
+                    android:onClick="@{() -> presenter.onLeftBreastClick()}"
+                    android:text="@string/left_breast"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sixteen_sp" />
+
+                <com.androidlib.CustomFontViews.CustomButtonRegular
+                    android:id="@+id/rightBreastBT"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/fifteen_dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_button_secondary_bg"
+                    android:onClick="@{() -> presenter.onRightBreastClick()}"
+                    android:text="@string/right_breast"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sixteen_sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/twenty_dp"
+                android:orientation="horizontal">
+
+                <com.androidlib.CustomFontViews.CustomButtonRegular
+                    android:id="@+id/startBT"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/fifteen_dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_button_secondary_bg"
+                    android:onClick="@{() -> presenter.onStartClick()}"
+                    android:text="@string/start"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sixteen_sp" />
+
+
+                <com.androidlib.CustomFontViews.CustomButtonRegular
+                    android:id="@+id/stopBT"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/fifteen_dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_button_secondary_bg"
+                    android:onClick="@{() -> presenter.onStopClick()}"
+                    android:text="@string/stop"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sixteen_sp" />
+            </LinearLayout>
+            <com.androidlib.CustomFontViews.CustomButtonRegular
+                android:id="@+id/attachBarcodeBT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/fifteen_dp"
+                android:background="@drawable/rounded_button_secondary_bg"
+                android:enabled="false"
+                android:onClick="@{()->presenter.onAttachBarcodeClick()}"
+                android:text="@string/attach_barcode"
+                android:textColor="@color/white" />
+
+            <com.androidlib.CustomFontViews.CustomButtonRegular
+                android:id="@+id/submitBT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/fifteen_dp"
+                android:background="@drawable/rounded_button_secondary_bg"
+                android:enabled="false"
+                android:onClick="@{()->presenter.onSubmitClick()}"
+                android:text="@string/submit"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+</layout>

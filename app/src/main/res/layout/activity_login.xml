@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="presenter"
+            type="com.android.omadre.activities.LoginActivity" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:orientation="vertical">
+
+        <com.androidlib.CustomFontViews.CustomTextviewBold
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/fifty_dp"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:text="OMADRE"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/thirty_six_dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/fourty_dp"
+            android:layout_marginRight="@dimen/fourty_dp"
+            android:layout_weight="7"
+
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <com.androidlib.CustomFontViews.CustomEditTextRegular
+                android:id="@+id/usernameET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:drawablePadding="@dimen/ten_dp"
+                android:gravity="center_vertical"
+                android:hint="@string/user_id"
+                android:imeOptions="actionNext"
+                android:padding="@dimen/ten_dp"
+                android:singleLine="true"
+                android:textSize="@dimen/sixteen_sp" />
+
+            <include layout="@layout/horizontal_black_line" />
+
+
+            <com.androidlib.CustomFontViews.CustomEditTextRegular
+                android:id="@+id/passwordET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ten_dp"
+                android:background="@android:color/transparent"
+                android:drawablePadding="@dimen/ten_dp"
+                android:gravity="center_vertical"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:padding="@dimen/ten_dp"
+                android:textSize="@dimen/sixteen_sp" />
+
+            <include layout="@layout/horizontal_black_line" />
+
+            <com.androidlib.CustomFontViews.CustomButtonRegular
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/fourty_dp"
+                android:background="@drawable/rounded_button_primary_bg"
+                android:onClick="@{() -> presenter.onLoginClick()}"
+                android:text="@string/login"
+                android:textColor="@color/white" />
+
+            <com.androidlib.CustomFontViews.CustomTextviewBold
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ten_dp"
+                android:gravity="center"
+                android:padding="@dimen/five_dp"
+                android:text="@string/forgot_password"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/fourteen_sp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <include layout="@layout/horizontal_black_line"
+                    android:layout_width="0dp"
+                    android:layout_weight="4"
+                    android:layout_height="1px"/>
+
+                <com.androidlib.CustomFontViews.CustomTextviewBold
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="@dimen/five_dp"
+                    android:text="@string/or"
+                    android:textColor="@color/secondary_color"
+                    android:textSize="@dimen/ten_sp" />
+
+                <include layout="@layout/horizontal_black_line"
+                    android:layout_width="0dp"
+                    android:layout_weight="4"
+                    android:layout_height="1px"
+                    />
+            </LinearLayout>
+
+            <com.androidlib.CustomFontViews.CustomButtonRegular
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/five_dp"
+                android:layout_marginTop="@dimen/twenty_dp"
+                android:background="@drawable/rounded_button_secondary_bg"
+                android:onClick="@{() -> presenter.onSignupClick()}"
+                android:text="@string/sign_up"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+        <com.androidlib.CustomFontViews.CustomTextviewBold
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:gravity="center"
+            android:padding="@dimen/five_dp"
+            android:text="@string/omadre_vida"
+            android:textColor="@color/white"
+            android:textSize="@dimen/fourteen_sp" />
+    </LinearLayout>
+</layout>

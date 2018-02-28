@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="presenter"
+            type="com.android.omadre.activities.IntroActivity" />
+    </data>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.android.omadre.activities.IntroActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:orientation="horizontal">
+
+            <com.androidlib.CustomFontViews.CustomButtonRegular
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten_dp"
+                android:layout_weight="1"
+                android:onClick="@{()->presenter.onLoginClick()}"
+                android:background="@drawable/rounded_button_primary_bg"
+                android:text="@string/login"
+                android:textColor="@color/white" />
+
+            <com.androidlib.CustomFontViews.CustomButtonRegular
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten_dp"
+                android:layout_weight="1"
+                android:onClick="@{()->presenter.onSignupClick()}"
+                android:background="@drawable/rounded_button_primary_bg"
+                android:text="@string/sign_up_txt"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+    </FrameLayout>
+</layout>

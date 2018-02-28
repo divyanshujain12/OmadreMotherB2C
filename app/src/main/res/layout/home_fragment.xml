@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="presenter"
+            type="com.android.omadre.fragments.HomeFragment" />
+    </data>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:orientation="vertical"
+            android:padding="@dimen/ten_dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/orderBarcodeCV"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:cardCornerRadius="@dimen/two_dp"
+
+                    app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:onClick="@{()-> presenter.onCreateBarcodeClick()}"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/eighty_dp"
+                            android:layout_height="@dimen/eighty_dp"
+                            app:srcCompat="@drawable/ic_barcode" 
+                            android:layout_margin="@dimen/ten_dp"/>
+
+                        <com.androidlib.CustomFontViews.CustomTextviewRegular
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/order_barcode"
+                            android:textColor="@color/black" />
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/recordCV"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:cardCornerRadius="@dimen/two_dp"
+
+                    app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:onClick="@{()-> presenter.onRecordClick()}"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/eighty_dp"
+                            android:layout_height="@dimen/eighty_dp"
+                            app:srcCompat="@drawable/ic_records"
+                            android:layout_margin="@dimen/ten_dp"/>
+
+                        <com.androidlib.CustomFontViews.CustomTextviewRegular
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/record"
+                            android:textColor="@color/black" />
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/feedCV"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:cardCornerRadius="@dimen/two_dp"
+
+                    app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:onClick="@{()-> presenter.onFeedClick()}"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/eighty_dp"
+                            android:layout_height="@dimen/eighty_dp"
+                            app:srcCompat="@drawable/ic_feed"
+                            android:layout_margin="@dimen/ten_dp"/>
+                        <com.androidlib.CustomFontViews.CustomTextviewRegular
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/feed"
+                            android:textColor="@color/black" />
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/statisticsCV"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:cardCornerRadius="@dimen/two_dp"
+
+                    app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:onClick="@{()-> presenter.onStatisticsClick()}"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/eighty_dp"
+                            android:layout_height="@dimen/eighty_dp"
+                            app:srcCompat="@drawable/ic_stats"
+                            android:layout_margin="@dimen/ten_dp"/>
+
+                        <com.androidlib.CustomFontViews.CustomTextviewRegular
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="STATISTICS"
+                            android:textColor="@color/black" />
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/helpCV"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:cardCornerRadius="@dimen/two_dp"
+
+                    app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:onClick="@{()-> presenter.onHelpClick()}"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/eighty_dp"
+                            android:layout_height="@dimen/eighty_dp"
+                            app:srcCompat="@drawable/ic_help"
+                            android:layout_margin="@dimen/ten_dp"/>
+
+                        <com.androidlib.CustomFontViews.CustomTextviewRegular
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/help"
+                            android:textColor="@color/black" />
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/tutorialCV"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:cardCornerRadius="@dimen/two_dp"
+
+                    app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:onClick="@{()-> presenter.onTutorialClick()}"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/eighty_dp"
+                            android:layout_height="@dimen/eighty_dp"
+                            app:srcCompat="@drawable/ic_tutorial"
+                            android:layout_margin="@dimen/ten_dp"/>
+
+                        <com.androidlib.CustomFontViews.CustomTextviewRegular
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TUTORIAL"
+                            android:textColor="@color/black" />
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </FrameLayout>
+</layout>

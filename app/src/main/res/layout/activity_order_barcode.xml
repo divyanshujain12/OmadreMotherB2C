@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="presenter"
+            type="com.android.omadre.activities.OrderBarcodeActivity" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/light_grey"
+        android:orientation="vertical"
+        tools:context="com.android.omadre.activities.OrderBarcodeActivity">
+
+        <include layout="@layout/customized_toolbar" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:orientation="horizontal"
+            android:padding="@dimen/ten_dp"
+            android:weightSum="10">
+
+            <com.androidlib.CustomFontViews.CustomTextviewRegular
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:layout_marginEnd="@dimen/five_dp"
+                android:layout_marginRight="@dimen/five_dp"
+                android:layout_weight="6.5"
+                android:padding="@dimen/five_dp"
+                android:text="@string/number_of_times_you_pump_breast_milk_daily"
+                android:textColor="@color/black" />
+
+            <android.support.v7.widget.AppCompatSpinner
+                android:id="@+id/milkPumpSP"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3.5"
+
+                android:entries="@array/milk_pump"
+                android:padding="@dimen/five_dp" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/twenty_dp"
+            android:weightSum="10">
+
+            <FrameLayout
+                android:id="@+id/trialFL"
+                android:layout_width="@dimen/one_hundred_fourty_five_dp"
+                android:layout_height="@dimen/one_hundred_fourty_five_dp"
+                android:background="@drawable/rounded_button_secondary_bg"
+                android:onClick="@{()->presenter.onTrialClick()}"
+                android:orientation="vertical">
+
+                <com.androidlib.CustomFontViews.CustomTextviewBold
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@string/trial_offer_n_5"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/twenty_sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/horizontal_black_line" />
+
+                    <com.androidlib.CustomFontViews.CustomTextviewRegular
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:padding="@dimen/five_dp"
+                        android:text="@string/one_time_use"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/twelve_sp" />
+                </LinearLayout>
+            </FrameLayout>
+
+
+            <LinearLayout
+                android:id="@+id/monthlyFL"
+                android:layout_width="@dimen/one_hundred_fourty_five_dp"
+                android:layout_height="@dimen/one_hundred_fourty_five_dp"
+                android:layout_gravity="right|end"
+                android:background="@drawable/rounded_button_secondary_bg"
+                android:gravity="center"
+                android:onClick="@{()->presenter.onMonthlyClick()}"
+                android:orientation="vertical">
+
+                <com.androidlib.CustomFontViews.CustomTextviewBold
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@string/monthly_offer_n_15"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/twenty_sp" />
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <com.androidlib.CustomFontViews.CustomButtonRegular
+            android:id="@+id/payOneTimeBT"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/thirty_dp"
+            android:background="@drawable/rounded_button_secondary_bg"
+            android:enabled="false"
+            android:onClick="@{()-> presenter.onPayOneTimeClick()}"
+            android:text="@string/pay_one_time_annual"
+            android:textColor="@color/white"
+            android:visibility="gone" />
+
+        <com.androidlib.CustomFontViews.CustomButtonRegular
+            android:id="@+id/swipeToPayBT"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/thirty_dp"
+            android:layout_marginLeft="@dimen/thirty_dp"
+            android:layout_marginRight="@dimen/thirty_dp"
+            android:layout_marginStart="@dimen/thirty_dp"
+            android:background="@drawable/rounded_button_secondary_bg"
+            android:enabled="false"
+            android:onClick="@{()-> presenter.onSwipeToPayClick()}"
+            android:text="@string/swipe_to_pay"
+            android:textColor="@color/white" />
+    </LinearLayout>
+</layout>
