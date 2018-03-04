@@ -5,7 +5,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class OnlyMotherModel extends BaseObservable implements Parcelable {
-    String id;
+    int id;
     String username;
     String password;
     String name;
@@ -17,7 +17,7 @@ public class OnlyMotherModel extends BaseObservable implements Parcelable {
     }
 
     protected OnlyMotherModel(Parcel in) {
-        id = in.readString();
+        id = in.readInt();
         username = in.readString();
         password = in.readString();
         name = in.readString();
@@ -38,11 +38,11 @@ public class OnlyMotherModel extends BaseObservable implements Parcelable {
         }
     };
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -101,7 +101,7 @@ public class OnlyMotherModel extends BaseObservable implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(id);
+        dest.writeInt(id);
         dest.writeString(username);
         dest.writeString(password);
         dest.writeString(name);

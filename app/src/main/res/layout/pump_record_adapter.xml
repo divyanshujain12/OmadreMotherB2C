@@ -5,7 +5,7 @@
 
         <variable
             name="presenter"
-            type="com.android.omadre.fragments.NotificationFragment" />
+            type="com.android.omadre.adapters.PumpRecordAdapter" />
 
         <variable
             name="data"
@@ -16,127 +16,134 @@
             type="com.androidlib.Utils.Utils" />
     </data>
 
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="@dimen/five_dp">
+        android:layout_height="wrap_content"
+        app:cardElevation="@dimen/five_dp"
+        app:cardUseCompatPadding="true">
 
-        <com.androidlib.CustomFontViews.CustomTextviewBold
-            android:id="@+id/motherNameTV"
-            android:layout_width="wrap_content"
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{data.mother.username}"
-            android:textColor="@color/black"
-            android:textSize="@dimen/eighteen_sp" />
+            android:padding="@dimen/ten_dp">
 
-        <com.androidlib.CustomFontViews.CustomTextviewRegular
-            android:id="@+id/pumpDateTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/two_dp"
-            android:text="@{utils.getTimeFromTFormatToGivenFormat(data.createdAt,utils.DATE_FORMAT)}"
-            app:layout_constraintTop_toBottomOf="@id/motherNameTV" />
+            <com.androidlib.CustomFontViews.CustomTextviewBold
+                android:id="@+id/motherNameTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{data.mother.username}"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/eighteen_sp" />
 
-        <com.androidlib.CustomFontViews.CustomTextviewBold
-            android:id="@+id/durationTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Duration"
-            android:textColor="@color/black"
-            android:textSize="@dimen/eighteen_sp"
-            app:layout_constraintRight_toRightOf="parent" />
+            <com.androidlib.CustomFontViews.CustomTextviewRegular
+                android:id="@+id/pumpDateTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/two_dp"
+                android:text="@{utils.getTimeFromTFormatToGivenFormat(data.createdAt,utils.DATE_FORMAT)}"
+                app:layout_constraintTop_toBottomOf="@id/motherNameTV" />
 
-        <com.androidlib.CustomFontViews.CustomTextviewRegular
-            android:id="@+id/durationValueTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/two_dp"
-            android:text="@{utils.getTimeDifference(data.leftStartTimings,data.leftStopTimings)}"
-            app:layout_constraintRight_toRightOf="@id/durationTV"
-            app:layout_constraintTop_toBottomOf="@id/durationTV" />
+            <com.androidlib.CustomFontViews.CustomTextviewBold
+                android:id="@+id/durationTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Duration"
+                android:textColor="@color/black"
+                android:textSize="@dimen/eighteen_sp"
+                app:layout_constraintRight_toRightOf="parent" />
 
-        <com.androidlib.CustomFontViews.CustomTextviewRegular
-            android:id="@+id/leftBreastTV"
-            android:layout_width="@dimen/fifty_dp"
-            android:layout_height="@dimen/fifty_dp"
-            android:layout_marginTop="@dimen/five_dp"
-            android:background="@drawable/circle_white_with_shade_bg"
-            android:gravity="center"
-            android:text="L"
-            android:textColor="@color/black"
-            android:textSize="@dimen/eighteen_sp"
-            app:layout_constraintLeft_toLeftOf="@id/pumpDateTV"
-            app:layout_constraintTop_toBottomOf="@id/pumpDateTV" />
+            <com.androidlib.CustomFontViews.CustomTextviewRegular
+                android:id="@+id/durationValueTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/two_dp"
+                android:text="@{utils.getTimeDifference(data.leftStartTimings,data.leftStopTimings)}"
+                app:layout_constraintRight_toRightOf="@id/durationTV"
+                app:layout_constraintTop_toBottomOf="@id/durationTV" />
 
-        <ProgressBar
-            android:id="@+id/leftBreastPB"
-            style="@android:style/Widget.ProgressBar.Horizontal"
-            android:layout_width="0dp"
-            android:layout_height="10dp"
-            android:layout_centerInParent="true"
-            android:layout_marginEnd="@dimen/five_dp"
-            android:layout_marginLeft="@dimen/ten_dp"
-            android:layout_marginRight="@dimen/five_dp"
-            android:layout_marginStart="@dimen/ten_dp"
-            android:max="@{data.max}"
-            android:progress="50"
-            android:progressDrawable="@drawable/linear_progress_primary"
-            app:layout_constraintBottom_toBottomOf="@id/leftBreastTV"
-            app:layout_constraintLeft_toRightOf="@id/leftBreastTV"
-            app:layout_constraintRight_toLeftOf="@id/leftQuantityTV"
-            app:layout_constraintTop_toTopOf="@id/leftBreastTV" />
+            <com.androidlib.CustomFontViews.CustomTextviewRegular
+                android:id="@+id/leftBreastTV"
+                android:layout_width="@dimen/fifty_dp"
+                android:layout_height="@dimen/fifty_dp"
+                android:layout_marginTop="@dimen/five_dp"
+                android:background="@drawable/circle_white_with_shade_bg"
+                android:gravity="center"
+                android:text="L"
+                android:textColor="@color/black"
+                android:textSize="@dimen/eighteen_sp"
+                app:layout_constraintLeft_toLeftOf="@id/pumpDateTV"
+                app:layout_constraintTop_toBottomOf="@id/pumpDateTV" />
 
-        <com.androidlib.CustomFontViews.CustomTextviewRegular
-            android:id="@+id/leftQuantityTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="5 ml"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="@id/leftBreastTV"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@id/leftBreastTV" />
+            <ProgressBar
+                android:id="@+id/leftBreastPB"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="0dp"
+                android:layout_height="10dp"
+                android:layout_centerInParent="true"
+                android:layout_marginEnd="@dimen/five_dp"
+                android:layout_marginLeft="@dimen/ten_dp"
+                android:layout_marginRight="@dimen/five_dp"
+                android:layout_marginStart="@dimen/ten_dp"
+                android:max="@{data.leftAmount+5}"
+                android:progress="@{data.leftAmount}"
+                android:progressDrawable="@drawable/linear_progress_primary"
+                app:layout_constraintBottom_toBottomOf="@id/leftBreastTV"
+                app:layout_constraintLeft_toRightOf="@id/leftBreastTV"
+                app:layout_constraintRight_toLeftOf="@id/leftQuantityTV"
+                app:layout_constraintTop_toTopOf="@id/leftBreastTV" />
 
-        <com.androidlib.CustomFontViews.CustomTextviewRegular
-            android:id="@+id/rightBreastTV"
-            android:layout_width="@dimen/fifty_dp"
-            android:layout_height="@dimen/fifty_dp"
-            android:layout_marginTop="@dimen/two_dp"
-            android:background="@drawable/circle_white_with_shade_bg"
-            android:gravity="center"
-            android:text="R"
-            android:textColor="@color/black"
-            android:textSize="@dimen/eighteen_sp"
-            app:layout_constraintLeft_toLeftOf="@id/leftBreastTV"
-            app:layout_constraintTop_toBottomOf="@id/leftBreastTV" />
+            <com.androidlib.CustomFontViews.CustomTextviewRegular
+                android:id="@+id/leftQuantityTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{data.leftAmount+` ml`}"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@id/leftBreastTV"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/leftBreastTV" />
 
-        <ProgressBar
-            android:id="@+id/rightBreastPB"
-            style="@android:style/Widget.ProgressBar.Horizontal"
-            android:layout_width="0dp"
-            android:layout_height="10dp"
-            android:layout_centerInParent="true"
-            android:layout_marginEnd="@dimen/five_dp"
-            android:layout_marginLeft="@dimen/ten_dp"
-            android:layout_marginRight="@dimen/five_dp"
-            android:layout_marginStart="@dimen/ten_dp"
-            android:max="100"
-            android:progress="50"
-            android:progressDrawable="@drawable/linear_progress_secondary"
-            app:layout_constraintBottom_toBottomOf="@id/rightBreastTV"
-            app:layout_constraintLeft_toRightOf="@id/rightBreastTV"
-            app:layout_constraintRight_toLeftOf="@id/rightQuantityTV"
-            app:layout_constraintTop_toTopOf="@id/rightBreastTV" />
+            <com.androidlib.CustomFontViews.CustomTextviewRegular
+                android:id="@+id/rightBreastTV"
+                android:layout_width="@dimen/fifty_dp"
+                android:layout_height="@dimen/fifty_dp"
+                android:layout_marginTop="@dimen/two_dp"
+                android:background="@drawable/circle_white_with_shade_bg"
+                android:gravity="center"
+                android:text="R"
+                android:textColor="@color/black"
+                android:textSize="@dimen/eighteen_sp"
+                app:layout_constraintLeft_toLeftOf="@id/leftBreastTV"
+                app:layout_constraintTop_toBottomOf="@id/leftBreastTV" />
 
-        <com.androidlib.CustomFontViews.CustomTextviewRegular
-            android:id="@+id/rightQuantityTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="5 ml"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="@id/rightBreastTV"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@id/rightBreastTV" />
+            <ProgressBar
+                android:id="@+id/rightBreastPB"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="0dp"
+                android:layout_height="10dp"
+                android:layout_centerInParent="true"
+                android:layout_marginEnd="@dimen/five_dp"
+                android:layout_marginLeft="@dimen/ten_dp"
+                android:layout_marginRight="@dimen/five_dp"
+                android:layout_marginStart="@dimen/ten_dp"
+                android:max="@{data.rightAmount+5}"
+                android:progress="@{data.rightAmount}"
+                android:progressDrawable="@drawable/linear_progress_secondary"
+                app:layout_constraintBottom_toBottomOf="@id/rightBreastTV"
+                app:layout_constraintLeft_toRightOf="@id/rightBreastTV"
+                app:layout_constraintRight_toLeftOf="@id/rightQuantityTV"
+                app:layout_constraintTop_toTopOf="@id/rightBreastTV" />
 
-    </android.support.constraint.ConstraintLayout>
+            <com.androidlib.CustomFontViews.CustomTextviewRegular
+                android:id="@+id/rightQuantityTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{data.rightAmount+` ml`}"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@id/rightBreastTV"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/rightBreastTV" />
+
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
 </layout>

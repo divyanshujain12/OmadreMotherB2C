@@ -20,7 +20,8 @@ public class BottleInfoModel extends BaseObservable implements Parcelable{
     int priority;
     String status;
     String bottleQRGeneratorId;
-    String motherId;
+    int motherId;
+    String createdAt;
     OnlyMotherModel Mother;
 
     public BottleInfoModel() {
@@ -39,7 +40,8 @@ public class BottleInfoModel extends BaseObservable implements Parcelable{
         priority = in.readInt();
         status = in.readString();
         bottleQRGeneratorId = in.readString();
-        motherId = in.readString();
+        motherId = in.readInt();
+        createdAt = in.readString();
         Mother = in.readParcelable(OnlyMotherModel.class.getClassLoader());
     }
 
@@ -143,12 +145,20 @@ public class BottleInfoModel extends BaseObservable implements Parcelable{
         this.bottleQRGeneratorId = bottleQRGeneratorId;
     }
 
-    public String getMotherId() {
+    public int getMotherId() {
         return motherId;
     }
 
-    public void setMotherId(String motherId) {
+    public void setMotherId(int motherId) {
         this.motherId = motherId;
+    }
+
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
     }
 
     public OnlyMotherModel getMother() {
@@ -177,7 +187,8 @@ public class BottleInfoModel extends BaseObservable implements Parcelable{
         dest.writeInt(priority);
         dest.writeString(status);
         dest.writeString(bottleQRGeneratorId);
-        dest.writeString(motherId);
+        dest.writeInt(motherId);
+        dest.writeString(createdAt);
         dest.writeParcelable(Mother, flags);
     }
 }
