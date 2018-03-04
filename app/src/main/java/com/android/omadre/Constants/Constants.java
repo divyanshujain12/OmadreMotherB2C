@@ -48,4 +48,5 @@ public interface Constants {
     String IMAGE = "image";
 
     String PHONE = "phone";
+    String DURATION = "duration";
 }

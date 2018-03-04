@@ -6,6 +6,10 @@
         <variable
             name="presenter"
             type="com.android.omadre.fragments.UserProfileFragment" />
+
+        <variable
+            name="data"
+            type="com.android.omadre.Models.MotherModel" />
     </data>
 
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -44,15 +48,14 @@
             app:riv_border_width="2dip"
             app:riv_corner_radius="30dip"
             app:riv_mutate_background="true"
-            app:riv_oval="true"
-             />
+            app:riv_oval="true" />
 
         <com.androidlib.CustomFontViews.CustomTextviewRegular
             android:id="@+id/usernameTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/ten_dp"
-            android:text="Sofia Rodriguez"
+            android:text="@{data.name}"
             android:textSize="@dimen/eighteen_sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -63,7 +66,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/two_dp"
-            android:text="Barcelona,Spain"
+            android:text="@{data.addressModel.city+`,`+data.addressModel.state}"
             android:textSize="@dimen/fourteen_sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -133,10 +136,11 @@
                             android:textColor="@color/black" />
 
                         <com.androidlib.CustomFontViews.CustomTextviewRegular
+                            android:id="@+id/pumpingQuantityTV"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="3-4 times a day"
+                            android:text=""
                             android:textSize="@dimen/fourteen_sp" />
                     </LinearLayout>
 
@@ -154,10 +158,11 @@
                             android:textColor="@color/black" />
 
                         <com.androidlib.CustomFontViews.CustomTextviewRegular
+                            android:id="@+id/userBarcodeTV"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="5"
+                            android:text=""
                             android:textSize="@dimen/fourteen_sp" />
                     </LinearLayout>
 
@@ -175,10 +180,11 @@
                             android:textColor="@color/black" />
 
                         <com.androidlib.CustomFontViews.CustomTextviewRegular
+                            android:id="@+id/emailIdTV"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="sofi@spain.com"
+                            android:text="@{data.username}"
                             android:textSize="@dimen/fourteen_sp" />
                     </LinearLayout>
 
@@ -196,10 +202,11 @@
                             android:textColor="@color/black" />
 
                         <com.androidlib.CustomFontViews.CustomTextviewRegular
+                            android:id="@+id/contactNumberTV"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="XXXXXXXXXX"
+                            android:text=""
                             android:textSize="@dimen/fourteen_sp" />
                     </LinearLayout>
 
@@ -217,10 +224,11 @@
                             android:textColor="@color/black" />
 
                         <com.androidlib.CustomFontViews.CustomTextviewRegular
+                            android:id="@+id/fullAddressTV"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="AVENIDA Diagonal 589-591,Barcelona,08014,Spain"
+                            android:text="@{data.addressModel.address+`,`+data.addressModel.city+`,`+data.addressModel.state+`,`+data.addressModel.pincode}"
                             android:textSize="@dimen/fourteen_sp" />
                     </LinearLayout>
 

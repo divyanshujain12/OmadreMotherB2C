@@ -5,6 +5,9 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.android.omadre.Constants.API;
@@ -58,8 +61,8 @@ public class RecordActivity extends BaseActivity implements FeedingAmountInterfa
 
     public void onStartRecordClick() {
         if (!recording) {
-           // onTimeStart();
-            startActivity(new Intent(this,CreateRecordActivity.class));
+            onTimeStart();
+
         } else {
             onStopTime();
         }
@@ -112,7 +115,7 @@ public class RecordActivity extends BaseActivity implements FeedingAmountInterfa
             stopTime = Calendar.getInstance().getTimeInMillis();
 
 
-            ReusedFunctions.getInstance().showMilkQuantityAlert(this, this);
+            //ReusedFunctions.getInstance().showMilkQuantityAlert(this, this);
         }
     }
 
@@ -173,5 +176,45 @@ public class RecordActivity extends BaseActivity implements FeedingAmountInterfa
         return jsonObject;
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.record_activity, menu);
+        return true;
+    }
 
+    /**
+     * Event Handling for Individual menu item selected
+     * Identify single menu item by it's id
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.actionSave:
+                Intent intent = new Intent(this, CreateRecordActivity.class);
+                intent.putExtra(Constants.START_TIME, startTime);
+                intent.putExtra(Constants.END_TIME, stopTime);
+                startActivity(intent);
+
+                return true;
+
+            case R.id.actionCancel:
+                reset();
+                return true;
+
+
+            default:
+                return super.onOptionsItemSelected(item);
+
+        }
+    }
+
+    private void reset() {
+        activityRecordBinding.timesCL.setVisibility(View.INVISIBLE);
+        activityRecordBinding.durationTV.setText("");
+        activityRecordBinding.startTimeTV.setText("");
+        activityRecordBinding.stopTimeTV.setText("");
+        startTime = 0;
+        stopTime = 0;
+    }
 }
