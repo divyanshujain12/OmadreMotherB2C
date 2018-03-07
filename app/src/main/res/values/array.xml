@@ -3,7 +3,6 @@
     <string-array name="milk_pump">
         <item>1-2</item>
         <item>2-3</item>
-        <item>3-4</item>
         <item>4-5</item>
     </string-array>
 </resources>

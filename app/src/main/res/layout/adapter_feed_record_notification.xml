@@ -5,11 +5,11 @@
 
         <variable
             name="presenter"
-            type="com.android.omadre.adapters.PumpRecordAdapter" />
+            type="com.android.omadre.adapters.FeedRecordAdapter" />
 
         <variable
             name="data"
-            type="com.android.omadre.Models.BottleInfoModel" />
+            type="com.android.omadre.Models.FeedModel" />
 
         <variable
             name="utils"
@@ -32,7 +32,7 @@
                 android:id="@+id/dateTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{utils.getTimeFromTFormatToGivenFormat(data.createdAt,utils.DATE_IN_DAY_FIRST)}"
+                android:text="@{utils.getTimeFromTFormatToGivenFormat(data.startTime,utils.DATE_IN_DAY_FIRST)}"
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/eighteen_sp" />
 
@@ -41,7 +41,7 @@
                 android:id="@+id/durationTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{utils.getTimeFromTFormatToGivenFormat(data.createdAt,utils.TIME_FORMAT)}"
+                android:text="@{utils.getTimeFromTFormatToGivenFormat(data.startTime,utils.TIME_FORMAT)}"
                 android:textColor="@color/black"
                 android:textSize="@dimen/sixteen_sp"
                 app:layout_constraintRight_toRightOf="parent" />
@@ -51,10 +51,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/two_dp"
-                android:text="@{data.leftAmount+` ml Volume Recorded`}"
+                android:text="@{data.notes}"
                 app:layout_constraintLeft_toLeftOf="@id/dateTV"
                 app:layout_constraintTop_toBottomOf="@id/dateTV" />
-
 
 
         </android.support.constraint.ConstraintLayout>

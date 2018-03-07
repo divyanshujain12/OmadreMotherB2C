@@ -8,25 +8,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.android.omadre.Models.NotificationModel;
+import com.android.omadre.Models.FeedModel;
 import com.android.omadre.R;
-import com.android.omadre.databinding.AdapterPumpRecordNotificationBinding;
+import com.android.omadre.databinding.AdapterFeedRecordNotificationBinding;
 import com.androidlib.Interfaces.RecyclerViewClick;
 import com.androidlib.Utils.ImageLoading;
+import com.androidlib.Utils.Utils;
 
 import java.util.ArrayList;
 
 /**
- * Created by divyanshuPC on 2/25/2018.
+ * Created by divyanshuPC on 3/7/2018.
  */
 
-public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.MyViewHolder> {
+public class FeedRecordAdapter extends RecyclerView.Adapter<FeedRecordAdapter.MyViewHolder> {
 
-    private ArrayList<NotificationModel> notificationModels;
+    private ArrayList<FeedModel> feedModels;
     private Context context;
     private ImageLoading imageLoading;
     private RecyclerViewClick recyclerViewClick;
-    AdapterPumpRecordNotificationBinding adapterPumpRecordNotificationBinding;
+    AdapterFeedRecordNotificationBinding adapterFeedRecordNotificationBinding;
     LinearLayout.LayoutParams layoutParams;
 
     class MyViewHolder extends RecyclerView.ViewHolder {
@@ -36,8 +37,8 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         }
     }
 
-    public NotificationAdapter(Context context, ArrayList<NotificationModel> notificationModels, RecyclerViewClick recyclerViewClick) {
-        this.notificationModels = notificationModels;
+    public FeedRecordAdapter(Context context, ArrayList<FeedModel> feedModels, RecyclerViewClick recyclerViewClick) {
+        this.feedModels = feedModels;
         this.context = context;
         imageLoading = new ImageLoading(context);
         this.recyclerViewClick = recyclerViewClick;
@@ -48,16 +49,18 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.adapter_pump_record_notification, parent, false);
-        adapterPumpRecordNotificationBinding = DataBindingUtil.bind(itemView);
+                .inflate(R.layout.adapter_feed_record_notification, parent, false);
+        adapterFeedRecordNotificationBinding = DataBindingUtil.bind(itemView);
         return new MyViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
-        NotificationModel mailModel = notificationModels.get(position);
-        adapterPumpRecordNotificationBinding.setData(mailModel);
-        adapterPumpRecordNotificationBinding.executePendingBindings();
+        FeedModel feedModel = feedModels.get(position);
+        adapterFeedRecordNotificationBinding.setData(feedModel);
+        adapterFeedRecordNotificationBinding.setUtils(Utils.getInstance());
+        adapterFeedRecordNotificationBinding.setPresenter(this);
+        adapterFeedRecordNotificationBinding.executePendingBindings();
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,9 +73,6 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
     @Override
     public int getItemCount() {
-        return notificationModels.size();
+        return feedModels.size();
     }
 }
-
-
-

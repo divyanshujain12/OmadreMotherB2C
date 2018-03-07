@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="presenter"
+            type="com.android.omadre.activities.RecordFeedActivity" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/customized_toolbar" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/fifteen_dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Chronometer
+                    android:id="@+id/timerCM"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textSize="45sp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent" />
+
+                <ImageView
+                    android:id="@+id/startPauseIV"
+                    android:layout_width="@dimen/seventy_dp"
+                    android:layout_height="@dimen/seventy_dp"
+                    android:layout_marginLeft="@dimen/ten_dp"
+                    android:layout_marginStart="@dimen/ten_dp"
+                    android:background="@drawable/circle_border_grey_transparent_bg"
+                    android:clickable="true"
+                    android:contentDescription="@string/null_value"
+                    android:focusable="true"
+                    android:onClick="@{()->presenter.onStartPauseClick()}"
+                    android:padding="@dimen/twenty_five_dp"
+                    android:src="@drawable/ic_play" />
+
+                <ImageView
+                    android:id="@+id/stopIV"
+                    android:layout_width="@dimen/seventy_dp"
+                    android:layout_height="@dimen/seventy_dp"
+                    android:layout_marginLeft="@dimen/ten_dp"
+                    android:layout_marginStart="@dimen/ten_dp"
+                    android:background="@drawable/circle_border_grey_transparent_bg"
+                    android:clickable="true"
+                    android:contentDescription="@string/null_value"
+                    android:focusable="true"
+                    android:onClick="@{()->presenter.onStopTimeClick()}"
+                    android:padding="@dimen/twenty_five_dp"
+                    android:src="@drawable/ic_stop" />
+            </LinearLayout>
+            <com.androidlib.CustomFontViews.CustomEditTextRegular
+                android:id="@+id/notesET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten_dp"
+                android:gravity="top"
+                android:hint="@string/enter_you_note_here"
+                android:minLines="3" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/fifteen_dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.androidlib.CustomFontViews.CustomButtonRegular
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_grey_transparent_bg"
+                    android:ems="8"
+                    android:onClick="@{()->presenter.onSaveClick()}"
+                    android:text="@string/save" />
+
+                <com.androidlib.CustomFontViews.CustomButtonRegular
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/ten_dp"
+                    android:layout_marginStart="@dimen/ten_dp"
+                    android:background="@drawable/rounded_grey_transparent_bg"
+                    android:ems="8"
+                    android:onClick="@{()->presenter.onResetClick()}"
+                    android:text="@string/reset" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>

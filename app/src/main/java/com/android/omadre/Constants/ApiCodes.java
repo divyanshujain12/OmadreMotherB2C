@@ -17,7 +17,7 @@ public interface ApiCodes {
     int PATIENT_RECORDS = 110;
     int DELETE_PATIENT_RECORD = 111;
     int BOTTLE_INFO = 112;
-    int FEED_RECORD_LISTING = 113;
+    int PUMP_RECORD_LISTING = 113;
     int BOTTLE_INFO_CURRENT = 114;
     int UPDATE_MOTHER_FEED_BOTTLE = 115;
     int GET_MOTHER_GALLERY = 116;
@@ -25,6 +25,9 @@ public interface ApiCodes {
     int MOTHER_GRAPH = 116;
     int MEMBERSHIP = 117;
     int REQUEST_QR_CODE =118;
+    int GET_REQUIRED_BOTTLES = 119;
+    int FEED = 120;
+    int FEED_RECORD_LISTING = 121;
 
 
 }

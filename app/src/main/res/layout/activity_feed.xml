@@ -18,21 +18,14 @@
         <include layout="@layout/customized_toolbar" />
 
         <LinearLayout
+            android:id="@+id/quantityLL"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
+            android:visibility="visible"
             android:orientation="vertical"
             android:padding="@dimen/fifteen_dp">
 
-            <com.androidlib.CustomFontViews.CustomButtonRegular
-                android:id="@+id/scanBarcodeBT"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bottom_shadow_bg"
-                android:onClick="@{()->presenter.onScanBarcodeClick()}"
-                android:text="@string/scan_barcode"
-                android:textColor="@color/white"
-                android:textSize="@dimen/sixteen_sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -68,64 +61,49 @@
                     android:textSize="@dimen/sixteen_sp" />
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <com.androidlib.CustomFontViews.CustomButtonRegular
+                android:id="@+id/scanBarcodeBT"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/twenty_dp"
-                android:orientation="horizontal"
-                android:weightSum="2">
-
-                <com.androidlib.CustomFontViews.CustomButtonRegular
-                    android:id="@+id/prepareBT"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/five_dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/rounded_button_secondary_bg"
-                    android:enabled="false"
-                    android:onClick="@{()->presenter.onPrepareClick()}"
-                    android:text="@string/prepare"
-                    android:textColor="@color/white" />
-
-
-                <com.androidlib.CustomFontViews.CustomButtonRegular
-                    android:id="@+id/storeBT"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/five_dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/rounded_button_secondary_bg"
-                    android:enabled="false"
-                    android:onClick="@{()->presenter.onStoreClick()}"
-                    android:text="@string/store"
-                    android:textColor="@color/white" />
-            </LinearLayout>
-
-
-            <com.androidlib.CustomFontViews.CustomButtonRegular
-                android:id="@+id/startFeedBT"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/five_dp"
-                android:background="@drawable/rounded_button_secondary_bg"
-                android:enabled="false"
-                android:onClick="@{()->presenter.onStartFeedClick()}"
-                android:text="@string/start_feed"
-                android:textColor="@color/white" />
-
-
-            <com.androidlib.CustomFontViews.CustomTextviewRegular
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:background="@drawable/bottom_shadow_bg"
-                android:gravity="center"
-                android:paddingBottom="@dimen/thirty_dp"
-                android:paddingTop="@dimen/thirty_dp"
-                android:text="@string/prepare_feed_nstore_again"
+                android:ems="15"
+                android:onClick="@{()->presenter.onScanBarcodeClick()}"
+                android:text="@string/scan_barcode"
                 android:textColor="@color/white"
-                android:textSize="@dimen/twenty_two_sp"
-                android:visibility="gone" />
+                android:textSize="@dimen/sixteen_sp" />
 
         </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/scannerViewFL"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/black"
+            android:orientation="horizontal"
+            android:padding="@dimen/twenty_dp"
+            android:visibility="gone">
+
+            <FrameLayout
+                android:id="@+id/scannerFL"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/fifteen_dp" />
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/backgroundFL"/>
+
+            <com.androidlib.CustomFontViews.CustomTextviewBold
+                android:id="@+id/scanResultTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="@dimen/fifteen_dp"
+                android:textSize="@dimen/eighteen_sp" />
+
+
+        </FrameLayout>
     </LinearLayout>
 </layout>

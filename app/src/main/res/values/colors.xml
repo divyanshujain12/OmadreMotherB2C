@@ -10,4 +10,7 @@
     <color name="toolbar_color">#F8F8F8</color>
     <color name="tab_layout_color">#5677FC</color>
     <color name="secondary_color">#5A697F</color>
+    <color name="green">#77D354</color>
+    <color name="red">#CE2913</color>
+    <color name="yellow">#FFFF00</color>
 </resources>

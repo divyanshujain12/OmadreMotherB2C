@@ -35,6 +35,7 @@
         <activity android:name=".activities.IntroActivity" />
         <activity android:name=".activities.DeliverActivity" />
         <activity android:name=".activities.CreateRecordActivity"></activity>
+        <activity android:name=".activities.RecordFeedActivity"/>
     </application>
 
 </manifest>

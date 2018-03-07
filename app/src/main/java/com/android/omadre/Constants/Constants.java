@@ -49,4 +49,8 @@ public interface Constants {
 
     String PHONE = "phone";
     String DURATION = "duration";
+    String STATUS = "status";
+    String REQUIRE_BOTTLES = "requiredBottles";
+    String PRIORITY = "priority";
+    String CURRENTLY_USED = "currentlyUsed";
 }

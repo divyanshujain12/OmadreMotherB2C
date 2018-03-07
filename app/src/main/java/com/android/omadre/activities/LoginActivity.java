@@ -42,7 +42,7 @@ public class LoginActivity extends BaseActivity {
     private void initialize() {
         validation = new Validation();
         validation.addValidationField(new ValidationModel(activityLoginBinding.usernameET, Validation.TYPE_NAME_VALIDATION, getString(R.string.username_error)));
-        validation.addValidationField(new ValidationModel(activityLoginBinding.usernameET, Validation.TYPE_EMAIL_VALIDATION, getString(R.string.invalid_email_id)));
+        //validation.addValidationField(new ValidationModel(activityLoginBinding.usernameET, Validation.TYPE_EMAIL_VALIDATION, getString(R.string.invalid_email_id)));
         validation.addValidationField(new ValidationModel(activityLoginBinding.passwordET, Validation.TYPE_PASSWORD_VALIDATION, getString(R.string.password_error_msg)));
     }
 

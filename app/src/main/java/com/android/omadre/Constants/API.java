@@ -22,9 +22,12 @@ public interface API {
     String DELETE_RECORD = CREATE_RECORD + "/%d";
     String BOTTLE_INFO = BASE + "bottleInformations/";
     String BOTTLE_INFO_CURRENT = BOTTLE_INFO + "first";
-    String FEED_RECORD_LISTING = BASE + "bottleinformations?motherId=%s";
+    String PUMP_RECORD_LISTING = BASE + "bottleinformations?motherId=%s";
     String UPDATE_MOTHER_FEED_BOTTLE = BOTTLE_INFO + "id/%d";
     String GET_MOTHER_GALLERY = BASE + "gallery/motherId/%s";
     String GET_RECORD_BY_PATIENT_ID = BASE + "records/patientId/%s";
     String MOTHER_GRAPH = BASE + "graph/mother/%s";
+    String GET_REQUIRED_BOTTLES = BOTTLE_INFO + "required/mother/%s/quantity/%s";
+    String FEED = BASE + "feeds/";
+    String FEED_RECORD_LISTING = FEED+"?motherId=%s";
 }

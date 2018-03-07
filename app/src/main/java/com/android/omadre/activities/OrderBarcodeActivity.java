@@ -7,16 +7,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 
-import com.android.omadre.Constants.API;
-import com.android.omadre.Constants.ApiCodes;
 import com.android.omadre.Constants.Constants;
 import com.android.omadre.R;
 import com.android.omadre.Utils.MySharedPereference;
-import com.android.omadre.Utils.ReusedFunctions;
 import com.android.omadre.databinding.ActivityOrderBarcodeBinding;
 import com.androidlib.CustomViews.CustomToasts;
 import com.androidlib.GlobalClasses.BaseActivity;
-import com.androidlib.Utils.CallWebService;
 import com.androidlib.Utils.Utils;
 
 import org.json.JSONException;
@@ -29,6 +25,8 @@ public class OrderBarcodeActivity extends BaseActivity implements AdapterView.On
     private String[] quantityArray = {"2", "3", "4", "5"};
     private String selectedQuantity;
     private String type;
+    private String[] trialOfferPrice = {"2", "4", "8"};
+    private String[] monthlyOfferPrice = {"5", "15", "20"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,7 +97,9 @@ public class OrderBarcodeActivity extends BaseActivity implements AdapterView.On
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         selectedQuantity = quantityArray[position];
-        CustomToasts.getInstance(this).showSuccessToast(selectedQuantity);
+        activityOrderBarcodeBinding.trialTV.setText(String.format(getString(R.string.trial_offer_n_5), trialOfferPrice[position]));
+        activityOrderBarcodeBinding.monthlyTV.setText(String.format(getString(R.string.monthly_offer_n_15), monthlyOfferPrice[position]));
+        //CustomToasts.getInstance(this).showSuccessToast(selectedQuantity);
     }
 
     @Override
